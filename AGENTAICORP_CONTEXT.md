@@ -114,7 +114,7 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - `ANTHROPIC_API_KEY` ✅
 - `DIALOG360_API_KEY` ⏳ pendiente
 - `DIALOG360_WEBHOOK_SECRET` ⏳ pendiente
-- `TWILIO_ACCOUNT_SID` ✅
+- `TWILIO_ACCOUNT_SID` ✅ (ACd38cef...7c, sin trailing newline)
 - `TWILIO_AUTH_TOKEN` ✅
 - `TWILIO_SANDBOX_NUMBER` ✅ (whatsapp:+14155238886)
 
@@ -128,8 +128,10 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - ✅ Historial clínico enriquecido + informes paciente + exportar CSV
 - ✅ Fix webhook Twilio: teléfono con +, TwiML vacío, búsqueda paciente normalizada
 - ✅ Twilio env vars configuradas en Vercel (SID, AUTH_TOKEN, SANDBOX_NUMBER)
-- ✅ Fix firma Twilio Sandbox: valida AccountSid en vez de X-Twilio-Signature (Sandbox no firma bien)
-  → Para producción con número propio: activar TWILIO_VERIFY_SIGNATURE=true
+- ✅ Fix firma Twilio Sandbox: valida AccountSid en vez de X-Twilio-Signature
+  → Para producción: activar TWILIO_VERIFY_SIGNATURE=true
+- ✅ Fix env vars Vercel: echo añadía \\n, recreadas con printf (sin trailing newline)
+- ✅ Webhook test OK: STATUS 200 + TwiML vacío desde curl
 - ⏳ WhatsApp real: Meta BM en revisión (apelación 1 abril, 24-48h)
 
 ---
