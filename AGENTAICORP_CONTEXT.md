@@ -132,6 +132,8 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
   → Para producción: activar TWILIO_VERIFY_SIGNATURE=true
 - ✅ Fix env vars Vercel: echo añadía \\n, recreadas con printf (sin trailing newline)
 - ✅ Webhook test OK: STATUS 200 + TwiML vacío desde curl
+- ✅ Fix normalización teléfono: getConversation + handleMessage buscan con/sin +
+  → Causa del "error técnico": datos existentes con 34... no matcheaban con +34...
 - ⏳ WhatsApp real: Meta BM en revisión (apelación 1 abril, 24-48h)
 
 ---
