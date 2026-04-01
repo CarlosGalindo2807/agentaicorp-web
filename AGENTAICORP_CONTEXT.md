@@ -114,9 +114,9 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - `ANTHROPIC_API_KEY` ✅
 - `DIALOG360_API_KEY` ⏳ pendiente
 - `DIALOG360_WEBHOOK_SECRET` ⏳ pendiente
-- `TWILIO_ACCOUNT_SID` ⚠️ AÑADIR EN VERCEL (causa de que no responda)
-- `TWILIO_AUTH_TOKEN` ⚠️ AÑADIR EN VERCEL
-- `TWILIO_SANDBOX_NUMBER` ⚠️ AÑADIR EN VERCEL (whatsapp:+14155238886)
+- `TWILIO_ACCOUNT_SID` ✅
+- `TWILIO_AUTH_TOKEN` ✅
+- `TWILIO_SANDBOX_NUMBER` ✅ (whatsapp:+14155238886)
 
 ### Estado actual
 - ✅ Deploy activo en dental.agentaicorp.com
@@ -127,8 +127,9 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - ✅ Modo dentista: agenda, historial, informes, metricas, pacientes archivados
 - ✅ Historial clínico enriquecido + informes paciente + exportar CSV
 - ✅ Fix webhook Twilio: teléfono con +, TwiML vacío, búsqueda paciente normalizada
-- ⚠️ Twilio: mensajes llegan al webhook pero NO responde porque faltan env vars en Vercel
-  → Añadir TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SANDBOX_NUMBER en Vercel
+- ✅ Twilio env vars configuradas en Vercel (SID, AUTH_TOKEN, SANDBOX_NUMBER)
+- ✅ Fix firma Twilio Sandbox: valida AccountSid en vez de X-Twilio-Signature (Sandbox no firma bien)
+  → Para producción con número propio: activar TWILIO_VERIFY_SIGNATURE=true
 - ⏳ WhatsApp real: Meta BM en revisión (apelación 1 abril, 24-48h)
 
 ---
