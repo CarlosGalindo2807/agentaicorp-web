@@ -1,5 +1,5 @@
 # 🧠 AGENTAICORP — CONTEXTO MAESTRO
-# Última actualización: 1 abril 2026
+# Última actualización: 1 abril 2026 (sesión 2: fix 3 bugs agente WhatsApp)
 # Este archivo es la fuente de verdad del ecosistema AgentaiCorp.
 # Pégalo al inicio de cualquier sesión de Claude Code en cualquier proyecto.
 
@@ -134,6 +134,9 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - ✅ Webhook test OK: STATUS 200 + TwiML vacío desde curl
 - ✅ Fix normalización teléfono: getConversation + handleMessage buscan con/sin +
   → Causa del "error técnico": datos existentes con 34... no matcheaban con +34...
+- ✅ Fix BUG 1: agente pide nombre/apellidos/email a pacientes nuevos (tool updatePatientData)
+- ✅ Fix BUG 2: createAppointment valida paciente_id antes de insertar + logging
+- ✅ Fix BUG 3: disponibilidad_json actualizada (jueves+viernes) + getAvailableSlots distingue "no abre" vs "completo"
 - ⏳ WhatsApp real: Meta BM en revisión (apelación 1 abril, 24-48h)
 
 ---
