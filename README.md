@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AgentaiCorp Web
 
-## Getting Started
+Web corporativa de [AgentaiCorp](https://agentaicorp.com) — agencia de agentes de IA especializados por sector.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 14** (App Router)
+- **TypeScript** (strict)
+- **Tailwind CSS**
+- **Framer Motion**
+- **Resend** (emails de contacto)
+
+## Estructura
+
+```
+app/
+  page.tsx              # Home (hero, galeria, como funciona, por que, CTA)
+  contacto/page.tsx     # Formulario de contacto
+  privacidad/page.tsx   # Politica de privacidad
+  terminos/page.tsx     # Terminos y condiciones
+  api/contacto/route.ts # API Route — envia email via Resend
+components/             # Componentes de UI (nav, hero, gallery, etc.)
+lib/
+  agents-config.ts      # Fuente de verdad de todos los agentes
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Agentes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| ID | Nombre | Sector | Estado | URL |
+|---|---|---|---|---|
+| dental | DentalAgent | Clinicas dentales | Disponible | dental.agentaicorp.com |
+| legal | LegalAgent | Despachos de abogados | Proximamente | — |
+| realestate | RealEstateAgent | Inmobiliarias | Proximamente | — |
+| hr | HRAgent | Recursos Humanos | Proximamente | — |
+| restaurant | RestaurantAgent | Restaurantes | Proximamente | — |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para anadir un nuevo agente, edita `lib/agents-config.ts`.
 
-## Learn More
+## Setup local
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+cp .env.example .env.local
+# Edita .env.local con tus claves
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Variables de entorno
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Descripcion |
+|---|---|
+| `CONTACT_EMAIL` | Email destino del formulario de contacto |
+| `RESEND_API_KEY` | API key de [Resend](https://resend.com) |
 
-## Deploy on Vercel
+## Despliegue
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El proyecto se despliega en **Vercel**. Cada push a `main` genera un deploy automatico.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Produccion: `agentaicorp.com`
+- Cada agente tiene su propio subdominio: `{id}.agentaicorp.com`
