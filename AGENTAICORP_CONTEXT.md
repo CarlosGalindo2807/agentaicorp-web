@@ -114,19 +114,21 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - `ANTHROPIC_API_KEY` ✅
 - `DIALOG360_API_KEY` ⏳ pendiente
 - `DIALOG360_WEBHOOK_SECRET` ⏳ pendiente
-- `TWILIO_ACCOUNT_SID` ⏳ pendiente
-- `TWILIO_AUTH_TOKEN` ⏳ pendiente
-- `TWILIO_SANDBOX_NUMBER` ⏳ pendiente (whatsapp:+14155238886)
+- `TWILIO_ACCOUNT_SID` ⚠️ AÑADIR EN VERCEL (causa de que no responda)
+- `TWILIO_AUTH_TOKEN` ⚠️ AÑADIR EN VERCEL
+- `TWILIO_SANDBOX_NUMBER` ⚠️ AÑADIR EN VERCEL (whatsapp:+14155238886)
 
 ### Estado actual
 - ✅ Deploy activo en dental.agentaicorp.com
 - ✅ Dashboard funcional con datos reales + historico + informes
 - ✅ Agente IA verificado E2E: modo paciente + modo dentista (7/7 tools)
 - ✅ Build fix: force-dynamic en /onboarding/layout.tsx
-- ✅ Webhook WhatsApp soporta Twilio Sandbox y 360dialog (auto-detecta)
+- ✅ Webhook WhatsApp soporta Twilio Sandbox y 360dialog (auto-detecta por Content-Type)
 - ✅ Modo dentista: agenda, historial, informes, metricas, pacientes archivados
 - ✅ Historial clínico enriquecido + informes paciente + exportar CSV
-- ⏳ Activar Twilio Sandbox (registrarse en twilio.com, configurar vars en Vercel)
+- ✅ Fix webhook Twilio: teléfono con +, TwiML vacío, búsqueda paciente normalizada
+- ⚠️ Twilio: mensajes llegan al webhook pero NO responde porque faltan env vars en Vercel
+  → Añadir TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SANDBOX_NUMBER en Vercel
 - ⏳ WhatsApp real: Meta BM en revisión (apelación 1 abril, 24-48h)
 
 ---
