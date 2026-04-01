@@ -71,15 +71,15 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui
 - Supabase: susvlmyawrzbfgizfvjk.supabase.co (eu-west-1)
 - Claude API: claude-sonnet-4-20250514
-- WhatsApp BSP: 360dialog (pendiente activación)
-- n8n Cloud: 5 workflows configurados
+- WhatsApp BSP: 360dialog + Twilio Sandbox (dual, auto-detecta por Content-Type)
+- n8n Cloud: 6 workflows configurados
 - Stripe (pendiente integración pagos)
 
 ### Base de datos Supabase
-- 8 tablas: clinicas, clinica_secrets, dentistas, pacientes, citas, conversaciones, tratamientos, user_clinica
-- 17 RLS policies multi-tenant via clinica_id
-- Migraciones 001-007 aplicadas en producción
-- Seed data: Clínica Demo, 5 pacientes, 9 citas
+- 10 tablas: clinicas, clinica_secrets, dentistas, pacientes, citas, conversaciones, tratamientos, user_clinica, historial_paciente, informes_paciente
+- 26 RLS policies multi-tenant via clinica_id
+- Migraciones 001-009 aplicadas en producción
+- Seed data: Clínica Demo, 5 pacientes, 9 citas, 13 historiales clínicos, 6 informes
 - Demo: admin@dental.com / Admin1234!
 
 ### Páginas dashboard
@@ -93,8 +93,9 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - `/landing` Landing pública
 
 ### Agente IA
-- 6 tools: getAvailableSlots, createAppointment, cancelAppointment, getPatientAppointments, getClinicInfo, saveConversationMessage
-- Webhook: dental.agentaicorp.com/api/webhooks/whatsapp
+- Modo PACIENTE: 6 tools (getAvailableSlots, createAppointment, cancelAppointment, getPatientAppointments, getClinicInfo, saveConversationMessage)
+- Modo DENTISTA: 7 tools (agenda, historial, proxima cita, resenas, metricas, informe, archivado)
+- Webhook: dental.agentaicorp.com/api/webhooks/whatsapp (soporta 360dialog + Twilio)
 - API agente: dental.agentaicorp.com/api/agent/chat
 
 ### n8n workflows (agentaicorp.app.n8n.cloud)
@@ -113,26 +114,31 @@ La web corporativa actúa como marketplace/showcase de todos los agentes.
 - `ANTHROPIC_API_KEY` ✅
 - `DIALOG360_API_KEY` ⏳ pendiente
 - `DIALOG360_WEBHOOK_SECRET` ⏳ pendiente
+- `TWILIO_ACCOUNT_SID` ⏳ pendiente
+- `TWILIO_AUTH_TOKEN` ⏳ pendiente
+- `TWILIO_SANDBOX_NUMBER` ⏳ pendiente (whatsapp:+14155238886)
 
 ### Estado actual
 - ✅ Deploy activo en dental.agentaicorp.com
-- ✅ Dashboard funcional con datos reales
-- ✅ Agente IA verificado E2E (simulación)
+- ✅ Dashboard funcional con datos reales + historico + informes
+- ✅ Agente IA verificado E2E: modo paciente + modo dentista (7/7 tools)
 - ✅ Build fix: force-dynamic en /onboarding/layout.tsx
+- ✅ Webhook WhatsApp soporta Twilio Sandbox y 360dialog (auto-detecta)
+- ✅ Modo dentista: agenda, historial, informes, metricas, pacientes archivados
+- ✅ Historial clínico enriquecido + informes paciente + exportar CSV
+- ⏳ Activar Twilio Sandbox (registrarse en twilio.com, configurar vars en Vercel)
 - ⏳ WhatsApp real: Meta BM en revisión (apelación 1 abril, 24-48h)
-- ⏳ Plan B: Twilio Sandbox si Meta sigue bloqueado
-- ⏳ Mejoras pendientes: modo dentista WA, historial clínico, archivo Excel histórico
 
 ---
 
 ## 🔲 PENDIENTES GLOBALES (por orden de prioridad)
 
-1. **Meta BM** — Comprobar si restricción levantada (2 abril)
-2. **WhatsApp real** — Activar 360dialog o Twilio Sandbox
+1. **Twilio Sandbox** — Registrarse en twilio.com, configurar vars en Vercel, probar E2E
+2. **Meta BM** — Comprobar si restricción levantada (2 abril) → 360dialog
 3. **Resend dominio** — Verificar agentaicorp.com en Resend para emails
-4. **Mejoras dental-agent** — Modo dentista WA, historial clínico, Excel histórico
-5. **Primer cliente** — Demo con clínica dental real
-6. **Stripe** — Integrar pagos (cuando haya primer cliente)
+4. **Primer cliente** — Demo con clínica dental real
+5. **Stripe** — Integrar pagos (cuando haya primer cliente)
+6. **Whisper** — Transcripción audio para mensajes de voz
 
 ---
 
